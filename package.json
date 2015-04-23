@@ -15,6 +15,7 @@
     "browser"
   ],
   "files": [
+    "src/",
     "strophe.js",
     "CHANGELOG.txt",
     "LICENSE.txt",
@@ -36,10 +37,6 @@
   "licenses": [
     "MIT"
   ],
-  "dependencies": {
-    "phantomjs": "^1.9.13",
-    "qunit-phantomjs-runner": "^2.1.0"
-  },
   "main": "strophe.js",
   "browser": "strophe.js",
   "scripts": {
