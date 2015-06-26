@@ -1317,8 +1317,10 @@ Strophe.Handler.prototype = {
     run: function (elem)
     {
         var result = null;
-        try {
+        // HACK do not try/catch this block
             result = this.handler(elem);
+        
+        try {
         } catch (e) {
             if (e.sourceURL) {
                 Strophe.fatal("error: " + this.handler +
@@ -2311,7 +2313,7 @@ Strophe.Connection.prototype = {
                 var hand = newList[i];
                 // encapsulate 'handler.run' not to lose the whole handler list if
                 // one of the handlers throws an exception
-                try {
+                // HACK do not try/catch this block
                     if (hand.isMatch(child) &&
                         (that.authenticated || !hand.user)) {
                         if (hand.run(child)) {
@@ -2320,6 +2322,8 @@ Strophe.Connection.prototype = {
                     } else {
                         that.handlers.push(hand);
                     }
+                
+                try {
                 } catch(e) {
                     // if the handler throws an exception, we consider it as false
                     Strophe.warn('Removing Strophe handlers due to uncaught exception: ' + e.message);
